@@ -171,7 +171,22 @@ class LinearLayer(object):
         :param X: layer inputs, shape (n_samples, n_inputs)
         :return: layer output, shape (n_samples, n_units)
         """
-        pass #TODO IMPLEMENT
+
+        input_sample_count = len(X)
+
+        res = np.zeros((input_sample_count, self.n_units))
+
+        for b in range(input_sample_count):
+            xb = X[b]
+            assert len(xb) == self.n_inputs, len(xb)
+            for u in range(self.n_units):
+                total = 0
+                for i in range(len(xb)):
+                    total += xb[i] * self.W[i][u]
+                total += self.b[u]
+                res[b][u] = total
+
+        return res
 
     def delta(self, Y, delta_next):
         """
@@ -225,7 +240,16 @@ class ReLULayer(object):
         return False
 
     def forward(self, X):
-        pass  # TODO IMPLEMENT
+        roll_coll = np.shape(X)
+        input_sample_count = roll_coll[0]
+        unit_count = roll_coll[1]
+        res = np.zeros((input_sample_count, unit_count))
+
+        for b in range(input_sample_count):
+            xb = X[b]
+            for u in range(unit_count):
+                res[b][u] = max(0, xb[u])
+        return res
 
     def delta(self, Y, delta_next):
         pass  # TODO IMPLEMENT
@@ -240,7 +264,20 @@ class SoftmaxLayer(object):
         return False
 
     def forward(self, X):
-        pass  # TODO IMPLEMENT
+        roll_coll = np.shape(X)
+        input_sample_count = roll_coll[0]
+        unit_count = roll_coll[1]
+
+        res = np.zeros((input_sample_count, unit_count))
+
+        for b in range(input_sample_count):
+            xb = X[b]
+            xb_exp = [np.math.exp(x) for x in xb]
+            sum_xb_exp = sum(xb_exp)
+            for u in range(unit_count):
+                res[b][u] = xb_exp[u] / sum_xb_exp
+        return res
+
 
     def delta(self, Y, delta_next):
         pass  # TODO IMPLEMENT
@@ -259,7 +296,20 @@ class LossCrossEntropy(object):
         :param T: one-hot encoded targets, shape (n_samples, n_inputs)
         :return: layer output, shape (n_samples, 1)
         """
-        pass  # TODO IMPLEMENT
+        roll_coll = np.shape(X)
+        input_sample_count = roll_coll[0]
+        unit_count = roll_coll[1]
+
+        res = np.zeros((input_sample_count, 1))
+
+        for b in range(input_sample_count):
+            xb = X[b]
+            xb_log = [np.math.log(x) for x in xb]
+            tb = T[b]
+            res[b] = np.dot(tb, xb_log)
+        return res
+
+
 
     def delta(self, X, T):
         """
@@ -318,7 +368,7 @@ class MLP(object):
         """
         layers = self.layers + (self.output_layers if output_layers else [])
         if last_layer is not None:
-            assert isinstance(last_layer, basestring)
+            assert isinstance(last_layer, "Layer is not instanced!") #basestring)
             layer_names = map(lambda layer: layer.name, layers)
             layers = layers[0: layer_names.index(last_layer) + 1]
         for layer in layers:
