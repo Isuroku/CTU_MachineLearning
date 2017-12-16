@@ -137,8 +137,8 @@ def plot_MNIST(array, n_cols=10):
     n_rows = n // n_cols
     assert n == n_rows * n_cols, [n, n_rows * n_cols]
     result = (array.reshape(n_rows, n_cols, height, width)
-              .swapaxes(1, 2)
-              .reshape(height * n_rows, width * n_cols))
+        .swapaxes(1, 2)
+        .reshape(height * n_rows, width * n_cols))
     plt.imshow(result, cmap='gray')
 
 
@@ -176,15 +176,15 @@ class LinearLayer(object):
 
         res = np.zeros((input_sample_count, self.n_units))
 
-        for b in range(input_sample_count):
-            xb = X[b]
+        for s in range(input_sample_count):
+            xb = X[s]
             assert len(xb) == self.n_inputs, len(xb)
             for u in range(self.n_units):
                 total = 0
                 for i in range(len(xb)):
                     total += xb[i] * self.W[i][u]
                 total += self.b[u]
-                res[b][u] = total
+                res[s][u] = total
 
         return res
 
@@ -196,7 +196,18 @@ class LinearLayer(object):
         :param delta_next: delta vector backpropagated from the following ayer, shape (n_samples, n_units)
         :return: delta vector from this layer, shape (n_samples, n_inputs)
         """
-        pass  # TODO IMPLEMENT
+
+        input_sample_count = len(delta_next)
+        res = np.zeros((input_sample_count, self.n_inputs))
+
+        for s in range(input_sample_count):
+            ndeltas = delta_next[s]
+            for i in range(self.n_inputs):
+                res[s][i] = 0
+                for u in range(self.n_units):
+                    res[s][i] += ndeltas[u] * self.W[i][u]
+
+        return res
 
     def grad(self, X, delta_next):
         """
@@ -206,7 +217,24 @@ class LinearLayer(object):
         :return: a list of two arrays [dW, db] corresponding to gradients of loss w.r.t. weights and biases, the shapes
         of dW and db are the same as the shapes of the actual parameters (self.W, self.b)
         """
-        pass  # TODO IMPLEMENT
+        gW = np.zeros((self.n_inputs, self.n_units))
+        gB = np.ones(self.n_units)
+
+        input_sample_count = len(X)
+
+        for i in range(self.n_inputs):
+            for u in range(self.n_units):
+                gW[i][u] = 0
+                gSW = np.zeros(input_sample_count)
+                gSB = np.zeros(input_sample_count)
+                for s in range(input_sample_count):
+                    gSW[s] += delta_next[s][u] * X[s][i]
+                    gSB[s] += delta_next[s][u] * self.b[u]
+
+                gW[i][u] = np.mean(gSW)
+                gB[u] = np.mean(gSB)
+
+        return [gW, gB]
 
     def initialize(self):
         """
@@ -252,7 +280,25 @@ class ReLULayer(object):
         return res
 
     def delta(self, Y, delta_next):
-        pass  # TODO IMPLEMENT
+        roll_coll = np.shape(Y)
+        input_sample_count = roll_coll[0]
+        unit_count = roll_coll[1]
+
+        res = np.zeros((input_sample_count, unit_count))
+
+        for s in range(input_sample_count):
+            ndeltas = delta_next[s]
+            for i in range(unit_count):
+                res[s][i] = 0
+                for u in range(unit_count):
+
+                    d = 0
+                    if Y[s][u] > 0:
+                        d = 1
+
+                    res[s][i] += ndeltas[u] * d
+
+        return res
 
 
 class SoftmaxLayer(object):
@@ -272,15 +318,36 @@ class SoftmaxLayer(object):
 
         for b in range(input_sample_count):
             xb = X[b]
-            xb_exp = [np.math.exp(x) for x in xb]
+            xb_exp = np.exp(xb)
+            # xb_exp = [np.math.exp(x) for x in xb]
             sum_xb_exp = sum(xb_exp)
-            for u in range(unit_count):
-                res[b][u] = xb_exp[u] / sum_xb_exp
+            res[b] = sum_xb_exp / sum_xb_exp
+            # for u in range(unit_count):
+            #   res[b][u] = xb_exp[u] / sum_xb_exp
         return res
 
-
     def delta(self, Y, delta_next):
-        pass  # TODO IMPLEMENT
+        roll_coll = np.shape(Y)
+        input_sample_count = roll_coll[0]
+        unit_count = roll_coll[1]
+
+        res = np.zeros((input_sample_count, unit_count))
+
+        for s in range(input_sample_count):
+            ndeltas = delta_next[s]
+            for i in range(unit_count):
+                res[s][i] = 0
+                for u in range(unit_count):
+
+                    d = 0
+                    if i != u:
+                        d = -1 * Y[s][i] * Y[s][u]
+                    else:
+                        d = Y[s][i] * (1 - Y[s][i])
+
+                    res[s][i] += ndeltas[u] * d
+
+        return res
 
 
 class LossCrossEntropy(object):
@@ -298,18 +365,15 @@ class LossCrossEntropy(object):
         """
         roll_coll = np.shape(X)
         input_sample_count = roll_coll[0]
-        unit_count = roll_coll[1]
 
         res = np.zeros((input_sample_count, 1))
 
-        for b in range(input_sample_count):
-            xb = X[b]
+        for s in range(input_sample_count):
+            xb = X[s]
             xb_log = [np.math.log(x) for x in xb]
-            tb = T[b]
-            res[b] = np.dot(tb, xb_log)
+            tb = T[s]
+            res[s] = -np.dot(tb, xb_log)
         return res
-
-
 
     def delta(self, X, T):
         """
@@ -319,7 +383,9 @@ class LossCrossEntropy(object):
         :param T: one-hot encoded targets, shape (n_samples, n_inputs)
         :return: delta vector from the loss layer, shape (n_samples, n_inputs)
         """
-        pass  # TODO IMPLEMENT
+
+        roll_coll = np.shape(X)
+        res = np.zeros((roll_coll[0], roll_coll[1]))
 
 
 class LossCrossEntropyForSoftmaxLogits(object):
@@ -368,7 +434,7 @@ class MLP(object):
         """
         layers = self.layers + (self.output_layers if output_layers else [])
         if last_layer is not None:
-            assert isinstance(last_layer, "Layer is not instanced!") #basestring)
+            assert isinstance(last_layer, "Layer is not instanced!")  # basestring)
             layer_names = map(lambda layer: layer.name, layers)
             layers = layers[0: layer_names.index(last_layer) + 1]
         for layer in layers:
@@ -391,7 +457,12 @@ class MLP(object):
         :param T: target labels, shape (n_samples, n_outputs)
         :return: a dict of records in which key is the layer.name and value the output of grad function
         """
-        pass  # TODO IMPLEMENT
+
+        grads = defaultdict(list)
+
+        for layer in self.layers:
+            if layer.has_params():
+                grads[layer.name].append(layer.grad)
 
 
 # ---------------------------------------
@@ -441,7 +512,7 @@ def train(net, X_train, T_train, batch_size=1, n_epochs=2, eta=0.1, X_test=None,
                                                                   np.nanmean(acc_train), np.nanmean(acc_test)))
 
     process_info('initial')
-    for epoch in xrange(1, n_epochs + 1):
+    for epoch in range(1, n_epochs + 1):
         offset = 0
         while offset < n_samples:
             last = min(offset + batch_size, n_samples)
