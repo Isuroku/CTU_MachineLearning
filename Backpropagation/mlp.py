@@ -1,11 +1,11 @@
 from __future__ import print_function
 import numpy as np
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 
 from collections import defaultdict
 import gzip
 import os
-import _pickle as pickle
+import cPickle as pickle
 import urllib
 
 
@@ -234,7 +234,7 @@ class LinearLayer(object):
                 gW[i][u] = np.mean(gSW)
                 gB[u] = np.mean(gSB)
 
-        return [gW, gB]
+        return gW, gB
 
     def initialize(self):
         """
@@ -287,16 +287,17 @@ class ReLULayer(object):
         res = np.zeros((input_sample_count, unit_count))
 
         for s in range(input_sample_count):
-            ndeltas = delta_next[s]
+            sample_delta = delta_next[s]
+
+            delta_sum = 0
+            for u in range(unit_count):
+                d = 0
+                if Y[s][u] > 0:
+                    d = 1
+                delta_sum += sample_delta[u] * d
+
             for i in range(unit_count):
-                res[s][i] = 0
-                for u in range(unit_count):
-
-                    d = 0
-                    if Y[s][u] > 0:
-                        d = 1
-
-                    res[s][i] += ndeltas[u] * d
+                res[s][i] = delta_sum
 
         return res
 
@@ -321,7 +322,7 @@ class SoftmaxLayer(object):
             xb_exp = np.exp(xb)
             # xb_exp = [np.math.exp(x) for x in xb]
             sum_xb_exp = sum(xb_exp)
-            res[b] = sum_xb_exp / sum_xb_exp
+            res[b] = xb_exp / sum_xb_exp
             # for u in range(unit_count):
             #   res[b][u] = xb_exp[u] / sum_xb_exp
         return res
@@ -385,7 +386,13 @@ class LossCrossEntropy(object):
         """
 
         roll_coll = np.shape(X)
+        input_sample_count = roll_coll[0]
         res = np.zeros((roll_coll[0], roll_coll[1]))
+
+        for s in range(input_sample_count):
+            res[s] = T[s] / X[s]
+
+        return res
 
 
 class LossCrossEntropyForSoftmaxLogits(object):
@@ -439,6 +446,7 @@ class MLP(object):
             layers = layers[0: layer_names.index(last_layer) + 1]
         for layer in layers:
             X = layer.forward(X)
+            layer.last_output = X
         return X
 
     def evaluate(self, X, T):
@@ -460,10 +468,23 @@ class MLP(object):
 
         grads = defaultdict(list)
 
-        for layer in self.layers:
-            if layer.has_params():
-                grads[layer.name].append(layer.grad)
+        layer_count = len(self.layers)
 
+        delta = self.loss.delta(self.layers[layer_count - 1].last_output, T)
+
+        for i in range(layer_count - 1, -1, -1):
+            layer = self.layers[i]
+
+            if layer.has_params():
+                if i == 0:
+                    grads[layer.name] = layer.grad(X, delta)
+                else:
+                    left_layer = self.layers[i - 1]
+                    grads[layer.name] = layer.grad(left_layer.last_output, delta)
+
+            delta = layer.delta(layer.last_output, delta)
+
+        return grads
 
 # ---------------------------------------
 # -------------- TRAINING ---------------
@@ -522,12 +543,14 @@ def train(net, X_train, T_train, batch_size=1, n_epochs=2, eta=0.1, X_test=None,
             for layer in net.layers:
                 if layer.has_params():
                     gs = grads[layer.name]
+                    dW, db = gs
                     dtheta = map(lambda g: -eta * g, gs)
                     layer.update_params(dtheta)
 
             offset += batch_size
         if verbose:
             print()
+
         process_info(epoch)
     return run_info
 
