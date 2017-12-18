@@ -289,15 +289,15 @@ class ReLULayer(object):
         for s in range(input_sample_count):
             sample_delta = delta_next[s]
 
-            delta_sum = 0
-            for u in range(unit_count):
+            t = 0
+            for i in range(unit_count):
                 d = 0
-                if Y[s][u] > 0:
+                if Y[s][i] > 0:
                     d = 1
-                delta_sum += sample_delta[u] * d
+                t += sample_delta[i] * d
 
             for i in range(unit_count):
-                res[s][i] = delta_sum
+                res[s][i] = t
 
         return res
 
@@ -390,7 +390,7 @@ class LossCrossEntropy(object):
         res = np.zeros((roll_coll[0], roll_coll[1]))
 
         for s in range(input_sample_count):
-            res[s] = T[s] / X[s]
+            res[s] = - T[s] / X[s]
 
         return res
 
@@ -444,9 +444,12 @@ class MLP(object):
             assert isinstance(last_layer, "Layer is not instanced!")  # basestring)
             layer_names = map(lambda layer: layer.name, layers)
             layers = layers[0: layer_names.index(last_layer) + 1]
+
         for layer in layers:
+            print('{}\npropagate: {}\n->'.format(X, layer.name))
             X = layer.forward(X)
             layer.last_output = X
+        print('{}\n'.format(X))
         return X
 
     def evaluate(self, X, T):
@@ -466,11 +469,14 @@ class MLP(object):
         :return: a dict of records in which key is the layer.name and value the output of grad function
         """
 
+        print('Gradient:')
         grads = defaultdict(list)
 
         layer_count = len(self.layers)
 
         delta = self.loss.delta(self.layers[layer_count - 1].last_output, T)
+        print('T:\n{}'.format(T))
+        print('loss delta:\n{}'.format(delta))
 
         for i in range(layer_count - 1, -1, -1):
             layer = self.layers[i]
@@ -481,8 +487,10 @@ class MLP(object):
                 else:
                     left_layer = self.layers[i - 1]
                     grads[layer.name] = layer.grad(left_layer.last_output, delta)
+                print('{}\ngrad:\n{}'.format(layer.name, grads[layer.name]))
 
             delta = layer.delta(layer.last_output, delta)
+            print('{}\ndelta:\n{}'.format(layer.name, delta))
 
         return grads
 
@@ -516,7 +524,7 @@ def train(net, X_train, T_train, batch_size=1, n_epochs=2, eta=0.1, X_test=None,
     run_info = defaultdict(list)
 
     def process_info(epoch):
-        loss_test, acc_test = np.nan, np.nan
+        loss_test, acc_test = [0], [0]
         Y = net.propagate(X_train)
         loss_train = net.loss.forward(Y, T_train)
         acc_train = accuracy(Y, T_train)
@@ -589,7 +597,7 @@ def experiment_XOR():
               loss=LossCrossEntropy(name='CE'),
               )
 
-    run_info = train(net, X, T, batch_size=4, eta=0.1, n_epochs=100, verbose=False)
+    run_info = train(net, X, T, batch_size=4, eta=0.3, n_epochs=200, verbose=True)
     plot_convergence(run_info)
     plt.show()
     print(net.propagate(X))
