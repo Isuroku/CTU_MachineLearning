@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="8d6c7f88-9703-4af4-8027-f2ca8f2322ce" name="Default" comment="пробую положить проект">
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Kmeans.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/main.py" />
+      <change beforePath="$PROJECT_DIR$/hand_00.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_00_seg.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_01.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_01_seg.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_02.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_02_seg.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_03.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_03_seg.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_04.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_04_seg.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_05.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_05_seg.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_06.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_06_seg.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_07.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_07_seg.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_08.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_08_seg.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_09.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_09_seg.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_10.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_10_seg.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_11.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_11_seg.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_12.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_12_seg.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_13.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_13_seg.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_14.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_14_seg.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_15.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_15_seg.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_16.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_16_seg.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_17.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_17_seg.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_18.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_18_seg.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_19.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_19_seg.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_20.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_20_seg.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_21.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_21_seg.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_22.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_22_seg.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_23.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_23_seg.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_24.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_24_seg.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_25.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_25_seg.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_26.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_26_seg.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_27.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_27_seg.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_28.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_28_seg.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_29.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_29_seg.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_30.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_30_seg.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_31.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_31_seg.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_32.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_32_seg.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_33.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_33_seg.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_34.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_34_seg.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_35.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_35_seg.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_36.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_36_seg.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_37.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_37_seg.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_38.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_38_seg.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_39.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_39_seg.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_40.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_40_seg.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_41.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_41_seg.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_42.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_42_seg.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_43.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_43_seg.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_44.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_44_seg.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_45.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_45_seg.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_46.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_46_seg.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_47.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_47_seg.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_48.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_48_seg.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_49.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand_49_seg.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/model_init.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/snippets.py" afterPath="$PROJECT_DIR$/snippets.py" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="451">
+              <caret line="52" column="37" lean-forward="true" selection-start-line="52" selection-start-column="37" selection-end-line="52" selection-end-column="37" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Kmeans.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Kmeans.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1199">
+              <caret line="67" column="44" lean-forward="true" selection-start-line="67" selection-start-column="44" selection-end-line="67" selection-end-column="44" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="snippets.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/snippets.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="242">
+              <caret line="11" column="49" lean-forward="true" selection-start-line="11" selection-start-column="49" selection-end-line="11" selection-end-column="49" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="function_base.py" pinned="false" current-in-tab="false">
+        <entry file="file://F:/Python27/Lib/site-packages/numpy/lib/function_base.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="186">
+              <caret line="1025" column="4" lean-forward="false" selection-start-line="1025" selection-start-column="4" selection-end-line="1025" selection-end-column="4" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="fromnumeric.py" pinned="false" current-in-tab="false">
+        <entry file="file://F:/Python27/Lib/site-packages/numpy/core/fromnumeric.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="200">
+              <caret line="1729" column="4" lean-forward="false" selection-start-line="1729" selection-start-column="4" selection-end-line="1729" selection-end-column="4" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="umath.py" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/.PyCharmCE2017.3/system/python_stubs/1713590963/numpy/core/umath.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="247">
+              <caret line="52" column="4" lean-forward="false" selection-start-line="52" selection-start-column="4" selection-end-line="52" selection-end-column="4" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="numeric.py" pinned="false" current-in-tab="false">
+        <entry file="file://F:/Python27/Lib/site-packages/numpy/core/numeric.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="306" column="62" lean-forward="true" selection-start-line="306" selection-start-column="29" selection-end-line="306" selection-end-column="62" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Image.py" pinned="false" current-in-tab="false">
+        <entry file="file://F:/Python27/Lib/site-packages/PIL/Image.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="464">
+              <caret line="2428" column="0" lean-forward="false" selection-start-line="2428" selection-start-column="0" selection-end-line="2428" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mlp.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../Backpropagation/mlp.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="396">
+              <caret line="18" column="84" lean-forward="false" selection-start-line="18" selection-start-column="84" selection-end-line="18" selection-end-column="84" />
+              <folding>
+                <element signature="e#0#37#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Kmeans.py" />
+        <option value="$PROJECT_DIR$/snippets.py" />
+        <option value="$PROJECT_DIR$/main.py" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="291" />
+    <option name="y" value="40" />
+    <option name="width" value="1400" />
+    <option name="height" value="1000" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>JSON</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="EM_Algorithm" type="b2602c69:ProjectViewProjectNode" />
+              <item name="EM_Algorithm" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/main.py" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="EM_Alg" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="F:\Python27\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="EM_Algorithm" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8d6c7f88-9703-4af4-8027-f2ca8f2322ce" name="Default" comment="" />
+      <created>1514107833649</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1514107833649</updated>
+    </task>
+    <task id="LOCAL-00001" summary="пробую положить проект">
+      <created>1514108064339</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1514108064339</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="54" y="-8" width="1874" height="1096" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23896663" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3234995" sideWeight="0.50215286" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2034588" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33875892" sideWeight="0.49784714" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="пробую положить проект" />
+    <option name="LAST_COMMIT_MESSAGE" value="пробую положить проект" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="19" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/../Backpropagation/mlp.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="18" column="84" lean-forward="false" selection-start-line="18" selection-start-column="84" selection-end-line="18" selection-end-column="84" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://F:/Python27/Lib/email/charset.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="269" column="8" lean-forward="false" selection-start-line="269" selection-start-column="8" selection-end-line="269" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharmCE2017.3/system/python_stubs/1713590963/numpy/core/umath.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="52" column="4" lean-forward="false" selection-start-line="52" selection-start-column="4" selection-end-line="52" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharmCE2017.3/system/python_stubs/1713590963/numpy/random/mtrand.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2117">
+          <caret line="6667" column="8" lean-forward="false" selection-start-line="6667" selection-start-column="8" selection-end-line="6667" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://F:/Python27/Lib/site-packages/PIL/Image.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="464">
+          <caret line="2428" column="0" lean-forward="false" selection-start-line="2428" selection-start-column="0" selection-end-line="2428" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://F:/Python27/Lib/site-packages/numpy/random/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://F:/Python27/Lib/site-packages/numpy/core/numeric.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="306" column="62" lean-forward="true" selection-start-line="306" selection-start-column="29" selection-end-line="306" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://F:/Python27/Lib/site-packages/numpy/core/fromnumeric.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="1729" column="4" lean-forward="false" selection-start-line="1729" selection-start-column="4" selection-end-line="1729" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://F:/Python27/Lib/site-packages/numpy/lib/function_base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="1025" column="4" lean-forward="false" selection-start-line="1025" selection-start-column="4" selection-end-line="1025" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/snippets.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="11" column="49" lean-forward="true" selection-start-line="11" selection-start-column="49" selection-end-line="11" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="451">
+          <caret line="52" column="37" lean-forward="true" selection-start-line="52" selection-start-column="37" selection-end-line="52" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Kmeans.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1199">
+          <caret line="67" column="44" lean-forward="true" selection-start-line="67" selection-start-column="44" selection-end-line="67" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
