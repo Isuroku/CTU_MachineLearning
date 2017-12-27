@@ -69,7 +69,8 @@ class GaussMVD:
         dimtup = tuple(dimlist)
 
         # estimate mean
-        mean = np.sum(eweight * arr_values, axis=dimtup) / wsum
+        ea = eweight * arr_values
+        mean = np.sum(ea, axis=dimtup) / wsum
 
         # estimate covariance
         darr = arr_values - mean

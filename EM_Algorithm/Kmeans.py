@@ -1,7 +1,7 @@
 import numpy as np
 
 
-class KMean:
+class CKMean:
     _dim = 3
     _cluster_count = 2
     _convergence_threshold = 0.00001
