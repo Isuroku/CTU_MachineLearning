@@ -73,7 +73,7 @@ def calculate_gauss(image_name, check_image_name, rnd):
 
 def test(calc_type):
     rnd = np.random.RandomState(1234)
-    index = 47
+    index = 2
     image_name = get_image_name(index)
     check_image_name = get_check_image_name(index)
     for i in range(1):
@@ -92,4 +92,4 @@ def test(calc_type):
 
 if __name__ == '__main__':
     test("mix_gauss")
-    test("k_mean")
+    #test("k_mean")
