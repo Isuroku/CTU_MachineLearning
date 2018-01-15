@@ -367,36 +367,49 @@ class GradientBoostedTrees(object):
 
         self.xattrs = [c for c in data.columns if c != tattr] if xattrs is None else xattrs
         self.tattr = tattr
+        self.max_depth = max_depth
         self.beta = beta
 
         self.forest = []
+        self.build(data, n_trees, rng)
 
-        tree = RegressionTree(data, tattr=tattr, xattrs=xattrs, max_depth=max_depth, rng=rng)
+    @staticmethod
+    def evaluate_tree(tree, data):
+        return np.r_[[tree.evaluate(x) for x in data.to_dict()]]
+
+    def evaluate_self(self, data):
+        return np.r_[[self.evaluate(x) for x in data.to_dict()]]
+
+    def build(self, data, n_trees, rng):
+        tree = RegressionTree(data, tattr=self.tattr, xattrs=self.xattrs, max_depth=self.max_depth, rng=rng)
         self.forest.append(tree)
 
         dt = data[self.tattr]
 
         for k in range(n_trees):
-            values = np.r_[[self.evaluate(x) for x in data.to_dict()]]
+            values = self.evaluate_self(data)
             g = dt - values
             df = data.modify_col(self.tattr, g)
 
             best_tree = None
             score = None
+            best_attr = None
             for attr in self.xattrs:
-                tmp_tree = RegressionTree(df, tattr=tattr, xattrs=[attr], max_depth=max_depth, rng=rng)
-                b = np.r_[[tmp_tree.evaluate(x) for x in df.to_dict()]]
+                tmp_tree = RegressionTree(df, tattr=self.tattr, xattrs=[attr], max_depth=self.max_depth, rng=rng)
+                b = self.evaluate_tree(tmp_tree, df)
                 s = (g - b) ** 2
                 tmp_score = np.sum(s)
 
                 if best_tree is None:
                     best_tree = tmp_tree
                     score = tmp_score
+                    best_attr = attr
                 else:
                     if tmp_score < score:
                         best_tree = tmp_tree
                         score = tmp_score
-
+                        best_attr = attr
+            print('best_attr {}'.format(best_attr))
             self.forest.append(best_tree)
         pass
 
@@ -598,10 +611,27 @@ def experiment_gbt_sin(show_model=True, show_rmse=True):
                   )
 
 
+def experiment_gbt_housing(show_rmse=True):
+    data_housing_train, data_housing_test = generate_boston_housing()
+    rng = np.random.RandomState(1)
+    generate_plot(data_housing_train, data_housing_test, tattr='medv',
+                  model_cls=GradientBoostedTrees,
+                  iterate_over='n_trees',
+                  iterate_values=[1, 2, 5, 10, 50, 100, 200, 500, 1000],
+                  title='GBT(housing)[b=1]',
+                  xlabel='trees count',
+                  rng=rng,
+                  show_model=False,
+                  show_rmse=show_rmse,
+                  beta=1
+                  )
+
+
 if __name__ == '__main__':
     # experiment_tree_sin(show_model=True, show_rmse=True)
     # experiment_forest_sin(show_model=True, show_rmse=True)
     # experiment_tree_housing(show_model=False, show_rmse=True)
     # experiment_forest_housing(show_model=False, show_rmse=True)
     # experiment_forest_housing_f(show_rmse=True)
-    experiment_gbt_sin(show_model=True, show_rmse=True)
+    # experiment_gbt_sin(show_model=True, show_rmse=True)
+    experiment_gbt_housing(show_rmse=True)
