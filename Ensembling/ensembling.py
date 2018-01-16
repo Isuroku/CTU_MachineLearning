@@ -6,6 +6,8 @@ from collections import deque
 from IPython.display import Image
 from sklearn.model_selection import train_test_split
 from time import time
+import threading
+import multiprocessing as mp
 
 
 class Dataset(object):
@@ -316,19 +318,11 @@ class RandomForest(object):
                  n_trees=1000,
                  max_depth=np.inf,
                  max_features=lambda n: n,
-                 rng=np.random.RandomState(1)):
-        """
-        Random forest constructor. Constructs the model fitting supplied dataset.
-        :param data: Dataset instance
-        :param tattr: the name of target attribute column
-        :param xattrs: list of names of the input attribute columns
-        :param n_trees: number of trees
-        :param max_depth: limit on tree depth
-        :param max_features: the number of features considered when splitting a node (all by default)
-        :param rng: random number generator
-        """
+                 rng=np.random.RandomState(1),
+                 multithread = False):
 
         self.tattr = tattr
+        self.multithread = multithread
 
         n_samples = len(data)
         self.forest = []
@@ -339,12 +333,42 @@ class RandomForest(object):
                                   max_features=max_features)
             self.forest.append(tree)
 
-    def evaluate(self, x):
+    def evaluate_onethread(self, x):
         a = np.zeros(len(self.forest))
         for i in range(len(self.forest)):
             a[i] = self.forest[i].evaluate(x)
         m = np.mean(a)
         return m
+
+    def evaluateTree(self, tree, x, output):
+        a = tree.evaluate(x)
+        output.put(a)
+
+    def evaluate_multithread(self, x):
+        output = mp.Queue()
+        processes = [mp.Process(target=self.evaluateTree, args=(self.forest[i], x, output)) for i in range(len(self.forest))]
+
+        for p in processes:
+            p.start()
+
+        # Exit the completed processes
+        for p in processes:
+            p.join()
+
+        # Get process results from the output queue
+        results = [output.get() for p in processes]
+        m = np.mean(results)
+
+        return m
+
+    def evaluate(self, x):
+        if self.multithread:
+            return self.evaluate_multithread(x)
+        else:
+            return self.evaluate_onethread(x)
+
+
+
 
 
 class GradientBoostedTrees(object):
@@ -529,7 +553,7 @@ def experiment_tree_sin(show_model=True, show_rmse=True):
     # if show: plt.show()
 
 
-def experiment_forest_sin(show_model=True, show_rmse=True):
+def experiment_forest_sin(show_model=True, show_rmse=True, multithread = False):
     data_sin_train, _ = generate_sin_data(n=20, scale=0.2)
     data_sin_test, sin_test_rmse = generate_sin_data(n=1000, scale=0.2)
     rng = np.random.RandomState(1)
@@ -538,12 +562,14 @@ def experiment_forest_sin(show_model=True, show_rmse=True):
                   model_cls=RandomForest,
                   iterate_over='n_trees',
                   iterate_values=[1, 2, 5, 10, 50, 100, 200, 500, 1000],
+                  # iterate_values=[10],
                   title='Random Forest (sin)',
                   xlabel='trees count',
                   bayes_rmse=sin_test_rmse,
                   rng=rng,
                   show_model=show_model,
                   show_rmse=show_rmse,
+                  multithread = multithread
                   )
 
 
@@ -561,18 +587,37 @@ def experiment_tree_housing(show_model=True, show_rmse=True):
                   )
 
 
-def experiment_forest_housing(show_model=True, show_rmse=True):
+def experiment_forest_housing(show_model=True, show_rmse=True, multithread = False):
     data_housing_train, data_housing_test = generate_boston_housing()
     rng = np.random.RandomState(1)
     generate_plot(data_housing_train, data_housing_test, tattr='medv',
                   model_cls=RandomForest,
                   iterate_over='n_trees',
                   iterate_values=[1, 2, 5, 10, 50, 100, 200, 500, 1000],
+                  #iterate_values=[5],
                   title='Random Forest (housing)',
                   xlabel='trees count',
                   rng=rng,
                   show_model=show_model,
                   show_rmse=show_rmse,
+                  multithread=multithread
+                  )
+
+
+def experiment_forest_housing_p(show_model=True, show_rmse=True, multithread = False):
+    data_housing_train, data_housing_test = generate_boston_housing()
+    rng = np.random.RandomState(1)
+    generate_plot(data_housing_train, data_housing_test, tattr='medv',
+                  model_cls=RandomForest,
+                  iterate_over='n_trees',
+                  #iterate_values=[1, 2, 5, 10, 50, 100, 200, 500, 1000],
+                  iterate_values=[100],
+                  title='Random Forest (housing)',
+                  xlabel='trees count',
+                  rng=rng,
+                  show_model=show_model,
+                  show_rmse=show_rmse,
+                  multithread=multithread
                   )
 
 
@@ -629,9 +674,10 @@ def experiment_gbt_housing(show_rmse=True):
 
 if __name__ == '__main__':
     # experiment_tree_sin(show_model=True, show_rmse=True)
-    # experiment_forest_sin(show_model=True, show_rmse=True)
+    #experiment_forest_sin(show_model=True, show_rmse=True, multithread = False)
+    experiment_forest_housing_p(show_model=True, show_rmse=True, multithread = True)
     # experiment_tree_housing(show_model=False, show_rmse=True)
     # experiment_forest_housing(show_model=False, show_rmse=True)
     # experiment_forest_housing_f(show_rmse=True)
     # experiment_gbt_sin(show_model=True, show_rmse=True)
-    experiment_gbt_housing(show_rmse=True)
+    # experiment_gbt_housing(show_rmse=True)
